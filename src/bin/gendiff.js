@@ -13,5 +13,3 @@ program
   .arguments('<firstconfig> <secondconfig>');
 
 program.parse(process.argv);
-
-program.help();
