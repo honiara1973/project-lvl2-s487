@@ -2,8 +2,8 @@
 
 import genDiff from '..';
 
-//const before = './before';
-//const after = './after';
+const before = './src/before.json';
+const after = './src/after.json';
 
 const program = require('commander');
 
@@ -16,4 +16,4 @@ program
 
 program.parse(process.argv);
 
-genDiff();
+genDiff(before, after);
