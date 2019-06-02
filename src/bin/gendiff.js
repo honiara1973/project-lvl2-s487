@@ -6,6 +6,9 @@ import genDiff from '..';
 // const before = './src/before.json';
 // const after = './src/after.json';
 
+// const before = './src/before.yml';
+// const after = './src/after.yml';
+
 program
   .option('-V, --version', 'output the version number')
   .option('-f, --format [type]', 'Output format')
@@ -15,4 +18,4 @@ program
 
 program.parse(process.argv);
 
-// genDiff();
+// console.log(genDiff(before, after));

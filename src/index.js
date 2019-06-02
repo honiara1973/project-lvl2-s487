@@ -1,4 +1,5 @@
 import fs from 'fs';
+import yaml from 'js-yaml';
 // import path from 'path';
 import CompareFunction from './utils';
 
@@ -6,8 +7,11 @@ const readFile = file => fs.readFileSync(file, 'utf-8');
 // const getExtension = file => path.extname(file);
 
 const genDiff = (file1, file2) => {
-  const obj1 = JSON.parse(readFile(file1));
-  const obj2 = JSON.parse(readFile(file2));
+  // const obj1 = JSON.parse(readFile(file1));
+  // const obj2 = JSON.parse(readFile(file2));
+
+  const obj1 = yaml.safeLoad(readFile(file1));
+  const obj2 = yaml.safeLoad(readFile(file2));
   // const fileExtension = getExtension(file1);
 
   return `{
