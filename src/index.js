@@ -3,6 +3,8 @@ import fs from 'fs';
 // import yaml from 'js-yaml';
 // import path from 'path';
 import CompareFunction from './utils';
+import getDiffArray from './diff';
+import render from './render';
 import getParser from './parser';
 
 const readFile = file => fs.readFileSync(file, 'utf-8');
@@ -18,13 +20,18 @@ const genDiff = (file1, file2) => {
 
   const obj1 = getParser(readFile, file1);
   const obj2 = getParser(readFile, file2);
+  const diffArray = getDiffArray(obj1, obj2);
 
+  return render(diffArray, 1);
+
+/*
   return `{
 ${CompareFunction.getIdenticalValues(obj1, obj2)}
 ${CompareFunction.getDifferentValues(obj1, obj2)}
 ${CompareFunction.getDeletedKeys(obj1, obj2)}
 ${CompareFunction.getAddedKeys(obj1, obj2)}
 }`;
+*/
 };
 
 // const genDiff = () => console.log(getExtension(before));
