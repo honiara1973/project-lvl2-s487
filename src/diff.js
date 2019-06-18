@@ -17,7 +17,6 @@ const getDiffArray = (obj1, obj2) => {
   const allKeys = keys1.concat(keys2)
     .reduce((acc, it) => (acc.includes(it) ? acc : acc.concat(it)), []);
 
-
   const diffArray = allKeys.reduce((acc, it) => {
     if (obj1[it] instanceof Object && obj2[it] instanceof Object) {
       return [...acc, processData(it, 'nested', '', '', getDiffArray(obj1[it], obj2[it]))];

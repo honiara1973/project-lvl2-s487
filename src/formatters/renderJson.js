@@ -1,4 +1,6 @@
-const renderJson = ast => ast.map((it) => {
+const GAP = 2;
+
+const renderJson = diff => diff.map((it) => {
   const {
     key, type, valueBefore, valueAfter, children = [],
   } = it;
@@ -22,4 +24,4 @@ const renderJson = ast => ast.map((it) => {
   }
 });
 
-export default ast => JSON.stringify(renderJson(ast), ' ', 2);
+export default diff => JSON.stringify(renderJson(diff), ' ', GAP);

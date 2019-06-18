@@ -1,4 +1,4 @@
-const mapValue = (value) => {
+const getValueTemplate = (value) => {
   if (value instanceof Object) {
     return '[complex Value]';
   }
@@ -10,7 +10,7 @@ const mapValue = (value) => {
   return value;
 };
 
-const renderPlain = (ast, path = '') => ast.map((it) => {
+const renderPlain = (diff, path = '') => diff.map((it) => {
   const {
     key, type, valueBefore, valueAfter, children = [],
   } = it;
@@ -21,17 +21,16 @@ const renderPlain = (ast, path = '') => ast.map((it) => {
     case 'deleted':
       return `Property '${currentPath}' was removed`;
     case 'added':
-      return `Property '${currentPath}' was added with value: ${mapValue(valueAfter)}`;
+      return `Property '${currentPath}' was added with value: ${getValueTemplate(valueAfter)}`;
     case 'nested':
       return renderPlain(children, currentPath);
     case 'changedValue':
-      return `Property '${currentPath}' was updated. From ${mapValue(valueBefore)} to ${mapValue(valueAfter)}`;
+      return `Property '${currentPath}' was updated. From ${getValueTemplate(valueBefore)} to ${getValueTemplate(valueAfter)}`;
     default:
       return '';
   }
 })
   .filter(it => it.length > 0)
   .join('\n');
-
 
 export default renderPlain;

@@ -1,37 +1,39 @@
-const indent = ' ';
+const SPACE = ' ';
+const GAP = 4;
+const SHIFT = 2;
 
-const valueToString = (data, currentIndent) => {
+const valueToString = (data, currentGap) => {
   if (data instanceof Object) {
     return `{\n${Object.entries(data)
-      .map(([key, value]) => `${indent.repeat(currentIndent + 4)}${key}: ${value}`).join('\n')}\n${indent.repeat(currentIndent)}}`;
+      .map(([key, value]) => `${SPACE.repeat(currentGap + GAP)}${key}: ${value}`).join('\n')}\n${SPACE.repeat(currentGap)}}`;
   }
 
   return data.toString();
 };
 
-const renderString = (ast, level = 1) => {
-  const currentIndent = level * 4;
+const renderString = (diff, level = 1) => {
+  const currentGap = level * GAP;
 
-  return `{\n${ast.map((it) => {
+  return `{\n${diff.map((it) => {
     const {
       key, type, valueBefore, valueAfter, children = [],
     } = it;
 
     switch (type) {
       case 'deleted':
-        return `${indent.repeat(currentIndent - 2)}- ${key}: ${valueToString(valueBefore, currentIndent)}`;
+        return `${SPACE.repeat(currentGap - SHIFT)}- ${key}: ${valueToString(valueBefore, currentGap)}`;
       case 'added':
-        return `${indent.repeat(currentIndent - 2)}+ ${key}: ${valueToString(valueAfter, currentIndent)}`;
+        return `${SPACE.repeat(currentGap - SHIFT)}+ ${key}: ${valueToString(valueAfter, currentGap)}`;
       case 'nested':
-        return `${indent.repeat(currentIndent)}${key}: ${renderString(children, level + 1)}`;
+        return `${SPACE.repeat(currentGap)}${key}: ${renderString(children, level + 1)}`;
       case 'sameValue':
-        return `${indent.repeat(currentIndent)}${key}: ${valueToString(valueBefore, currentIndent)}`;
+        return `${SPACE.repeat(currentGap)}${key}: ${valueToString(valueBefore, currentGap)}`;
       case 'changedValue':
-        return `${indent.repeat(currentIndent - 2)}- ${key}: ${valueToString(valueBefore, currentIndent)}\n${indent.repeat(currentIndent - 2)}+ ${key}: ${valueToString(valueAfter, currentIndent)}`;
+        return `${SPACE.repeat(currentGap - SHIFT)}- ${key}: ${valueToString(valueBefore, currentGap)}\n${SPACE.repeat(currentGap - SHIFT)}+ ${key}: ${valueToString(valueAfter, currentGap)}`;
       default:
         return '';
     }
-  }).join('\n')}\n${indent.repeat(currentIndent - 4)}}`;
+  }).join('\n')}\n${SPACE.repeat(currentGap - GAP)}}`;
 };
 
 export default renderString;
