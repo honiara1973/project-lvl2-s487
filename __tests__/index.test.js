@@ -1,3 +1,4 @@
+import fs from 'fs';
 import genDiff from '../src';
 
 const beforeJson = './__tests__/__fixtures__/plain/before.json';
@@ -18,6 +19,17 @@ const afterYamlNested = './__tests__/__fixtures__/nested/after.yml';
 const beforeIniNested = './__tests__/__fixtures__/nested/before.ini';
 const afterIniNested = './__tests__/__fixtures__/nested/after.ini';
 
+const result = fs.readFileSync('./__tests__/__fixtures__/plain/resultString.txt', 'utf-8');
+const resultNested = fs.readFileSync('./__tests__/__fixtures__/nested/resultString.txt', 'utf-8');
+const resultPlain = fs.readFileSync('./__tests__/__fixtures__/plain/resultPlain.txt', 'utf-8');
+const resultNestedPlain = fs.readFileSync('./__tests__/__fixtures__/nested/resultPlain.txt', 'utf-8');
+const resultJson = fs.readFileSync('./__tests__/__fixtures__/plain/resultJson.txt', 'utf-8');
+const resultNestedJson = fs.readFileSync('./__tests__/__fixtures__/nested/resultJson.txt', 'utf-8');
+
+
+
+
+/*
 const result = `{
     host: hexlet.io
   - timeout: 50
@@ -26,7 +38,8 @@ const result = `{
   - follow: false
   + verbose: true
 }`;
-
+*/
+/*
 const resultNested = `{
     common: {
         setting1: Value 1
@@ -61,27 +74,76 @@ const resultNested = `{
         fee: 100500
     }
 }`;
+*/
 
 test('compare JSON', () => {
-  expect(genDiff(beforeJson, afterJson)).toBe(result);
+  expect(genDiff(beforeJson, afterJson, 'string')).toBe(result);
 });
 
 test('compare Yaml', () => {
-  expect(genDiff(beforeYaml, afterYaml)).toBe(result);
+  expect(genDiff(beforeYaml, afterYaml, 'string')).toBe(result);
 });
 
 test('compare Ini', () => {
-  expect(genDiff(beforeIni, afterIni)).toBe(result);
+  expect(genDiff(beforeIni, afterIni, 'string')).toBe(result);
 });
 
 test('compare nestedJSON', () => {
-  expect(genDiff(beforeJsonNested, afterJsonNested)).toBe(resultNested);
+  expect(genDiff(beforeJsonNested, afterJsonNested, 'string')).toBe(resultNested);
 });
 
 test('compare nestedYaml', () => {
-  expect(genDiff(beforeYamlNested, afterYamlNested)).toBe(resultNested);
+  expect(genDiff(beforeYamlNested, afterYamlNested, 'string')).toBe(resultNested);
 });
 
 test('compare nestedIni', () => {
-  expect(genDiff(beforeIniNested, afterIniNested)).toBe(resultNested);
+  expect(genDiff(beforeIniNested, afterIniNested, 'string')).toBe(resultNested);
+});
+
+test('compare JSON plain', () => {
+  expect(genDiff(beforeJson, afterJson, 'plain')).toBe(resultPlain);
+});
+
+test('compare Yaml plain', () => {
+  expect(genDiff(beforeYaml, afterYaml, 'plain')).toBe(resultPlain);
+});
+
+test('compare Ini plain', () => {
+  expect(genDiff(beforeIni, afterIni, 'plain')).toBe(resultPlain);
+});
+
+test('compare nestedJSON plain', () => {
+  expect(genDiff(beforeJsonNested, afterJsonNested, 'plain')).toBe(resultNestedPlain);
+});
+
+test('compare nestedYaml plain', () => {
+  expect(genDiff(beforeYamlNested, afterYamlNested, 'plain')).toBe(resultNestedPlain);
+});
+
+test('compare nestedIni plain', () => {
+  expect(genDiff(beforeIniNested, afterIniNested, 'plain')).toBe(resultNestedPlain);
+});
+
+test('compare JSON json', () => {
+  expect(genDiff(beforeJson, afterJson, 'json')).toBe(resultJson);
+});
+
+test('compare Yaml json', () => {
+  expect(genDiff(beforeYaml, afterYaml, 'json')).toBe(resultJson);
+});
+
+test('compare Ini json', () => {
+  expect(genDiff(beforeIni, afterIni, 'json')).toBe(resultJson);
+});
+
+test('compare nestedJSON json', () => {
+  expect(genDiff(beforeJsonNested, afterJsonNested, 'json')).toBe(resultNestedJson);
+});
+
+test('compare nestedYaml json', () => {
+  expect(genDiff(beforeYamlNested, afterYamlNested, 'json')).toBe(resultNestedJson);
+});
+
+test('compare nestedIni json', () => {
+  expect(genDiff(beforeIniNested, afterIniNested, 'json')).toBe(resultNestedJson);
 });
