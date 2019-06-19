@@ -3,10 +3,22 @@
 [![Build Status](https://travis-ci.org/honiara1973/project-lvl2-s487.svg?branch=master)](https://travis-ci.org/honiara1973/project-lvl2-s487)
 
 
-Аскинема: установка пакета 
+Installation
 
-<a href="https://asciinema.org/a/zWtpJ7yY4YCCJzhf7dzpnKgKs" target="_blank"><img src="https://asciinema.org/a/zWtpJ7yY4YCCJzhf7dzpnKgKs.svg" /></a>
+<a href="https://asciinema.org/a/r735uKFBWPITAQfDQgnpgeLGT" target="_blank"><img src="https://asciinema.org/a/r735uKFBWPITAQfDQgnpgeLGT.svg" /></a>
 
-Аскинема: игра "Проверка на чётность"
+Usage format string (plain and nested files)
 
- <a href="https://asciinema.org/a/OjNvMJuzqZUuJ7GDQGUbZnWcH" target="_blank"><img src="https://asciinema.org/a/OjNvMJuzqZUuJ7GDQGUbZnWcH.svg" /></a>
+<a href="https://asciinema.org/a/vyuEnmaEfmXo64qV3kmnWUP4W" target="_blank"><img src="https://asciinema.org/a/vyuEnmaEfmXo64qV3kmnWUP4W.svg" /></a>
+
+Usage format plain (plain and nested files)
+
+<a href="https://asciinema.org/a/ZvK0SQyEElLxIQwHR73PnVNx8" target="_blank"><img src="https://asciinema.org/a/ZvK0SQyEElLxIQwHR73PnVNx8.svg" /></a>
+
+Usage format json (plain and nested files)
+
+<a href="https://asciinema.org/a/8gRcb7X1SSozXPboYJC9iaKlF" target="_blank"><img src="https://asciinema.org/a/8gRcb7X1SSozXPboYJC9iaKlF.svg" /></a>
+
+
+
+
