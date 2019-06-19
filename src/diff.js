@@ -11,11 +11,16 @@ const processData = (key, type, valueBefore, valueAfter, children = []) => {
 };
 
 const getDiffArray = (obj1, obj2) => {
-  const keys1 = Object.keys(obj1);
-  const keys2 = Object.keys(obj2);
+  // const keys1 = Object.keys(obj1);
+  // const keys2 = Object.keys(obj2);
 
+  const allKeys = Object.keys(obj1).concat(Object.keys(obj2))
+    .reduce((acc, it) => (acc.includes(it) ? acc : acc.concat(it)), []);
+
+  /*
   const allKeys = keys1.concat(keys2)
     .reduce((acc, it) => (acc.includes(it) ? acc : acc.concat(it)), []);
+*/
 
   const diffArray = allKeys.reduce((acc, it) => {
     if (obj1[it] instanceof Object && obj2[it] instanceof Object) {
