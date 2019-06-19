@@ -2,7 +2,7 @@ install:
 	npm install
 
 start:
-	npx babel-node -- 'src/bin/gendiff.js' ./src/before1.json ./src/after1.json 
+	npx babel-node -- 'src/bin/gendiff.js' 
 
 publish:
 	npm publish --dry-run
