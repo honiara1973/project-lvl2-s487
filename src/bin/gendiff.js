@@ -2,20 +2,13 @@
 
 import program from 'commander';
 import genDiff from '..';
-
-// const before = './src/before.json';
-// const after = './src/after.json';
-
-// const before = './src/before.yml';
-// const after = './src/after.yml';
+import { version } from '../../package.json';
 
 program
-  .option('-V, --version', 'output the version number')
-  .option('-f, --format [type]', 'Output format')
+  .version(version)
   .description('Compares two configuration files and shows a difference.')
+  .option('-f, --format [type]', 'Choose output format: string, plain, json', 'string')
   .arguments('<firstconfig> <secondconfig>')
   .action((first, second) => console.log(genDiff(first, second, program.format)));
 
 program.parse(process.argv);
-
-// console.log(genDiff(before, after));

@@ -2,10 +2,10 @@ const SPACE = ' ';
 const GAP = 4;
 const SHIFT = 2;
 
-const valueToString = (data, currentGap) => {
+const valueToString = (data, gap) => {
   if (data instanceof Object) {
     return `{\n${Object.entries(data)
-      .map(([key, value]) => `${SPACE.repeat(currentGap + GAP)}${key}: ${value}`).join('\n')}\n${SPACE.repeat(currentGap)}}`;
+      .map(([key, value]) => `${SPACE.repeat(gap + GAP)}${key}: ${value}`).join('\n')}\n${SPACE.repeat(gap)}}`;
   }
 
   return data.toString();
