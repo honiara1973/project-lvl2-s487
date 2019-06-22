@@ -19,83 +19,92 @@ const afterYamlNested = './__tests__/__fixtures__/nested/after.yml';
 const beforeIniNested = './__tests__/__fixtures__/nested/before.ini';
 const afterIniNested = './__tests__/__fixtures__/nested/after.ini';
 
-const resultString = fs.readFileSync('./__tests__/__fixtures__/plain/resultString.txt', 'utf-8');
-const resultNestedString = fs.readFileSync('./__tests__/__fixtures__/nested/resultString.txt', 'utf-8');
-const resultPlain = fs.readFileSync('./__tests__/__fixtures__/plain/resultPlain.txt', 'utf-8');
-const resultPlainIni = fs.readFileSync('./__tests__/__fixtures__/plain/resultPlainIni.txt', 'utf-8');
-const resultNestedPlain = fs.readFileSync('./__tests__/__fixtures__/nested/resultPlain.txt', 'utf-8');
-const resultJson = fs.readFileSync('./__tests__/__fixtures__/plain/resultJson.txt', 'utf-8');
-const resultJsonIni = fs.readFileSync('./__tests__/__fixtures__/plain/resultJsonIni.txt', 'utf-8');
-const resultNestedJson = fs.readFileSync('./__tests__/__fixtures__/nested/resultJson.txt', 'utf-8');
-
 test('compare JSON', () => {
-  expect(genDiff(beforeJson, afterJson, 'string')).toBe(resultString);
+  const result = fs.readFileSync('./__tests__/__fixtures__/plain/resultString.txt', 'utf-8');
+  expect(genDiff(beforeJson, afterJson, 'string')).toBe(result);
 });
 
 test('compare Yaml', () => {
-  expect(genDiff(beforeYaml, afterYaml, 'string')).toBe(resultString);
+  const result = fs.readFileSync('./__tests__/__fixtures__/plain/resultString.txt', 'utf-8');
+  expect(genDiff(beforeYaml, afterYaml, 'string')).toBe(result);
 });
 
 test('compare Ini', () => {
-  expect(genDiff(beforeIni, afterIni, 'string')).toBe(resultString);
+  const result = fs.readFileSync('./__tests__/__fixtures__/plain/resultString.txt', 'utf-8');
+  expect(genDiff(beforeIni, afterIni, 'string')).toBe(result);
 });
 
 test('compare nestedJSON', () => {
-  expect(genDiff(beforeJsonNested, afterJsonNested, 'string')).toBe(resultNestedString);
+  const result = fs.readFileSync('./__tests__/__fixtures__/nested/resultString.txt', 'utf-8');
+  expect(genDiff(beforeJsonNested, afterJsonNested, 'string')).toBe(result);
 });
 
 test('compare nestedYaml', () => {
-  expect(genDiff(beforeYamlNested, afterYamlNested, 'string')).toBe(resultNestedString);
+  const result = fs.readFileSync('./__tests__/__fixtures__/nested/resultString.txt', 'utf-8');
+  expect(genDiff(beforeYamlNested, afterYamlNested, 'string')).toBe(result);
 });
 
 test('compare nestedIni', () => {
-  expect(genDiff(beforeIniNested, afterIniNested, 'string')).toBe(resultNestedString);
+  const result = fs.readFileSync('./__tests__/__fixtures__/nested/resultString.txt', 'utf-8');
+  expect(genDiff(beforeIniNested, afterIniNested, 'string')).toBe(result);
 });
 
 test('compare JSON plain', () => {
-  expect(genDiff(beforeJson, afterJson, 'plain')).toBe(resultPlain);
+  const result = fs.readFileSync('./__tests__/__fixtures__/plain/resultPlain.txt', 'utf-8');
+  expect(genDiff(beforeJson, afterJson, 'plain')).toBe(result);
 });
 
 test('compare Yaml plain', () => {
-  expect(genDiff(beforeYaml, afterYaml, 'plain')).toBe(resultPlain);
+  const result = fs.readFileSync('./__tests__/__fixtures__/plain/resultPlain.txt', 'utf-8');
+  expect(genDiff(beforeYaml, afterYaml, 'plain')).toBe(result);
 });
 
 test('compare Ini plain', () => {
-  expect(genDiff(beforeIni, afterIni, 'plain')).toBe(resultPlainIni);
+  const result = fs.readFileSync('./__tests__/__fixtures__/plain/resultPlainIni.txt', 'utf-8');
+  expect(genDiff(beforeIni, afterIni, 'plain')).toBe(result);
 });
 
 test('compare nestedJSON plain', () => {
-  expect(genDiff(beforeJsonNested, afterJsonNested, 'plain')).toBe(resultNestedPlain);
+  const result = fs.readFileSync('./__tests__/__fixtures__/nested/resultPlain.txt', 'utf-8');
+  expect(genDiff(beforeJsonNested, afterJsonNested, 'plain')).toBe(result);
 });
 
 test('compare nestedYaml plain', () => {
-  expect(genDiff(beforeYamlNested, afterYamlNested, 'plain')).toBe(resultNestedPlain);
+  const result = fs.readFileSync('./__tests__/__fixtures__/nested/resultPlain.txt', 'utf-8');
+  expect(genDiff(beforeYamlNested, afterYamlNested, 'plain')).toBe(result);
 });
 
 test('compare nestedIni plain', () => {
-  expect(genDiff(beforeIniNested, afterIniNested, 'plain')).toBe(resultNestedPlain);
+  const result = fs.readFileSync('./__tests__/__fixtures__/nested/resultPlain.txt', 'utf-8');
+  expect(genDiff(beforeIniNested, afterIniNested, 'plain')).toBe(result);
 });
 
 test('compare JSON json', () => {
-  expect(genDiff(beforeJson, afterJson, 'json')).toBe(resultJson);
+  const result = fs.readFileSync('./__tests__/__fixtures__/plain/resultJson.txt', 'utf-8');
+  expect(genDiff(beforeJson, afterJson, 'json')).toBe(result);
 });
 
 test('compare Yaml json', () => {
-  expect(genDiff(beforeYaml, afterYaml, 'json')).toBe(resultJson);
+  const result = fs.readFileSync('./__tests__/__fixtures__/plain/resultJson.txt', 'utf-8');
+  expect(genDiff(beforeYaml, afterYaml, 'json')).toBe(result);
 });
 
 test('compare Ini json', () => {
-  expect(genDiff(beforeIni, afterIni, 'json')).toBe(resultJsonIni);
+  const result = fs.readFileSync('./__tests__/__fixtures__/plain/resultJsonIni.txt', 'utf-8');
+  expect(genDiff(beforeIni, afterIni, 'json')).toBe(result);
 });
 
 test('compare nestedJSON json', () => {
-  expect(genDiff(beforeJsonNested, afterJsonNested, 'json')).toBe(resultNestedJson);
+  const result = fs.readFileSync('./__tests__/__fixtures__/nested/resultJson.txt', 'utf-8');
+  expect(genDiff(beforeJsonNested, afterJsonNested, 'json')).toBe(result);
 });
 
 test('compare nestedYaml json', () => {
-  expect(genDiff(beforeYamlNested, afterYamlNested, 'json')).toBe(resultNestedJson);
+  const result = fs.readFileSync('./__tests__/__fixtures__/nested/resultJson.txt', 'utf-8');
+  expect(genDiff(beforeYamlNested, afterYamlNested, 'json')).toBe(result);
 });
 
 test('compare nestedIni json', () => {
-  expect(genDiff(beforeIniNested, afterIniNested, 'json')).toBe(resultNestedJson);
+  const result = fs.readFileSync('./__tests__/__fixtures__/nested/resultJson.txt', 'utf-8');
+  expect(genDiff(beforeIniNested, afterIniNested, 'json')).toBe(result);
 });
