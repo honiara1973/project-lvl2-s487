@@ -1,15 +1,10 @@
 import yaml from 'js-yaml';
 import ini from 'ini';
-import path from 'path';
-
-const parseJson = data => JSON.parse(data);
-const parseYaml = data => yaml.safeLoad(data);
-const parseIni = data => ini.parse(data);
 
 const parser = {
-  json: parseJson,
-  yml: parseYaml,
-  ini: parseIni,
+  json: JSON.parse,
+  yml: yaml.safeLoad,
+  ini: ini.parse,
 };
 
-export default (fn, data) => parser[path.extname(data).slice(1)](fn(data));
+export default (content, extension) => parser[extension](content);

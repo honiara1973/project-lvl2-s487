@@ -10,21 +10,13 @@ const processData = (key, type, valueBefore, valueAfter, children = []) => {
   return entry;
 };
 
-const getDiffArray = (obj1, obj2) => {
-  // const keys1 = Object.keys(obj1);
-  // const keys2 = Object.keys(obj2);
-
+const getDifferences = (obj1, obj2) => {
   const allKeys = Object.keys(obj1).concat(Object.keys(obj2))
     .reduce((acc, it) => (acc.includes(it) ? acc : acc.concat(it)), []);
 
-  /*
-  const allKeys = keys1.concat(keys2)
-    .reduce((acc, it) => (acc.includes(it) ? acc : acc.concat(it)), []);
-*/
-
-  const diffArray = allKeys.reduce((acc, it) => {
+  const differences = allKeys.reduce((acc, it) => {
     if (obj1[it] instanceof Object && obj2[it] instanceof Object) {
-      return [...acc, processData(it, 'nested', '', '', getDiffArray(obj1[it], obj2[it]))];
+      return [...acc, processData(it, 'nested', '', '', getDifferences(obj1[it], obj2[it]))];
     }
 
     if (Object.keys(obj1).includes(it) && Object.keys(obj2).includes(it)) {
@@ -43,7 +35,7 @@ const getDiffArray = (obj1, obj2) => {
     return [...acc];
   }, []);
 
-  return diffArray;
+  return differences;
 };
 
-export default getDiffArray;
+export default getDifferences;

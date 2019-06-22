@@ -1,17 +1,22 @@
 import fs from 'fs';
+import path from 'path';
 
-import getDiffArray from './diff';
+import getDifferences from './diff';
 import render from './formatters';
-import getParser from './parser';
+import parseContent from './parser';
 
-const readFile = file => fs.readFileSync(file, 'utf-8');
+const genDiff = (firstFilePath, secondFilePath, format) => {
+  const firstFileContent = fs.readFileSync(firstFilePath, 'utf-8');
+  const secondFileContent = fs.readFileSync(secondFilePath, 'utf-8');
 
-const genDiff = (file1, file2, format) => {
-  const obj1 = getParser(readFile, file1);
-  const obj2 = getParser(readFile, file2);
-  const diffArray = getDiffArray(obj1, obj2);
+  const firstFileExtName = path.extname(firstFilePath).slice(1);
+  const secondFileExtName = path.extname(secondFilePath).slice(1);
 
-  return render(diffArray, format);
+  const obj1 = parseContent(firstFileContent, firstFileExtName);
+  const obj2 = parseContent(secondFileContent, secondFileExtName);
+  const differences = getDifferences(obj1, obj2);
+
+  return render(differences, format);
 };
 
 export default genDiff;
