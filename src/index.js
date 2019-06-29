@@ -9,11 +9,11 @@ const genDiff = (firstFilePath, secondFilePath, format) => {
   const firstFileContent = fs.readFileSync(firstFilePath, 'utf-8');
   const secondFileContent = fs.readFileSync(secondFilePath, 'utf-8');
 
-  const firstFileExtName = path.extname(firstFilePath).slice(1);
-  const secondFileExtName = path.extname(secondFilePath).slice(1);
+  const firstFileType = path.extname(firstFilePath).slice(1);
+  const secondFileType = path.extname(secondFilePath).slice(1);
 
-  const obj1 = parseContent(firstFileContent, firstFileExtName);
-  const obj2 = parseContent(secondFileContent, secondFileExtName);
+  const obj1 = parseContent(firstFileContent, firstFileType);
+  const obj2 = parseContent(secondFileContent, secondFileType);
   const differences = getDifferences(obj1, obj2);
 
   return render(differences, format);

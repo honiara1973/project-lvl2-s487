@@ -2,27 +2,36 @@
   {
     "key": "host",
     "type": "sameValue",
-    "value": "hexlet.io"
+    "valueBefore": "hexlet.io",
+    "valueAfter": "",
+    "children": []
   },
   {
     "key": "timeout",
     "type": "changedValue",
     "valueBefore": 50,
-    "valueAfter": 20
+    "valueAfter": 20,
+    "children": []
   },
   {
     "key": "proxy",
     "type": "deleted",
-    "valueBefore": "123.234.53.22"
+    "valueBefore": "123.234.53.22",
+    "valueAfter": "",
+    "children": []
   },
   {
     "key": "follow",
     "type": "deleted",
-    "valueBefore": false
+    "valueBefore": false,
+    "valueAfter": "",
+    "children": []
   },
   {
     "key": "verbose",
     "type": "added",
-    "valueAfter": true
+    "valueBefore": "",
+    "valueAfter": true,
+    "children": []
   }
 ]
