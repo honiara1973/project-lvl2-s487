@@ -8,4 +8,4 @@ const chooseFormat = {
   json: renderJson,
 };
 
-export default (diffArray, format) => chooseFormat[format](diffArray);
+export default (differences, format) => chooseFormat[format](differences);
