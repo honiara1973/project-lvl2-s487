@@ -15,11 +15,6 @@ const valueToString = (data, gap) => {
   return `{\n${entries
     .map(([key, value]) => `${tab(gap + indent)}${key}: ${value}`)
     .join('\n')}\n${tab(gap)}}`;
-
-  /*
-    return `{\n${Object.entries(data)
-    .map(([key, value]) => `${space.repeat(gap + indent)}${key}: ${value}`).join('\n')}\n${space.repeat(gap)}}`;
-    */
 };
 
 const renderString = (diff, level = 1) => {
@@ -30,7 +25,6 @@ const renderString = (diff, level = 1) => {
       key, type, valueBefore, valueAfter, children = [],
     } = it;
 
-    /*
     const cases = {
       deleted: `${tab(currentGap - shift)}- ${key}: ${valueToString(valueBefore, currentGap)}`,
       added: `${tab(currentGap - shift)}+ ${key}: ${valueToString(valueAfter, currentGap)}`,
@@ -39,23 +33,8 @@ const renderString = (diff, level = 1) => {
       changedValue: [`${tab(currentGap - shift)}- ${key}: ${valueToString(valueBefore, currentGap)}`,
         `${tab(currentGap - shift)}+ ${key}: ${valueToString(valueAfter, currentGap)}`],
     };
-*/
 
-    switch (type) {
-      case 'deleted':
-        return `${tab(currentGap - shift)}- ${key}: ${valueToString(valueBefore, currentGap)}`;
-      case 'added':
-        return `${tab(currentGap - shift)}+ ${key}: ${valueToString(valueAfter, currentGap)}`;
-      case 'nested':
-        return `${tab(currentGap)}${key}: ${renderString(children, level + 1)}`;
-      case 'sameValue':
-        return `${tab(currentGap)}${key}: ${valueToString(valueBefore, currentGap)}`;
-      case 'changedValue':
-        return [`${tab(currentGap - shift)}- ${key}: ${valueToString(valueBefore, currentGap)}`,
-          `${tab(currentGap - shift)}+ ${key}: ${valueToString(valueAfter, currentGap)}`];
-      default:
-        return 'Unknown key type';
-    }
+    return cases[type];
   });
 
   return `{\n${_.flatten(differences).join('\n')}\n${tab(currentGap - indent)}}`;

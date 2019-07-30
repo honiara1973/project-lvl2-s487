@@ -2,7 +2,7 @@ install:
 	npm install
 
 start:
-	npx babel-node -- 'src/bin/gendiff.js' ../Tests/nested/before.json ../Tests/nested/after.json
+	npx babel-node -- 'src/bin/gendiff.js'
 
 publish:
 	npm publish --dry-run
