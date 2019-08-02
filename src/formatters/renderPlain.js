@@ -21,13 +21,13 @@ const renderPlain = (diff, path = '') => diff.map((it) => {
     deleted: `Property '${currentPath}' was removed`,
     added: `Property '${currentPath}' was added with value: ${getValueTemplate(valueAfter)}`,
     nested: renderPlain(children, currentPath),
-    sameValue: '',
+    sameValue: null,
     changedValue: `Property '${currentPath}' was updated. From ${getValueTemplate(valueBefore)} to ${getValueTemplate(valueAfter)}`,
   };
 
   return cases[type];
 })
-  .filter(it => it.length > 0)
+  .filter(it => it)
   .join('\n');
 
 export default renderPlain;

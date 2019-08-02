@@ -1,6 +1,7 @@
 import fs from 'fs';
 import genDiff from '../src';
 
+/*
 const beforeJson = './__tests__/__fixtures__/plain/before.json';
 const afterJson = './__tests__/__fixtures__/plain/after.json';
 
@@ -19,6 +20,41 @@ const afterYamlNested = './__tests__/__fixtures__/nested/after.yml';
 const beforeIniNested = './__tests__/__fixtures__/nested/before.ini';
 const afterIniNested = './__tests__/__fixtures__/nested/after.ini';
 
+// name compare fileformat format
+
+// beforeJson afterJson (string format)(plain format)(json format)
+// beforeYaml afterYaml (string format)(plain format)(json format)
+// beforeIni afterIni (string format)(plain format)(json format)
+*/
+
+const testCases = [
+  ['json', 'string'],
+  ['yml', 'string'],
+  ['ini', 'string'],
+  ['json', 'plain'],
+  ['yml', 'plain'],
+  ['ini', 'plain'],
+  ['json', 'json'],
+  ['yml', 'json'],
+  ['ini', 'json'],
+];
+
+test.each(testCases)('%s compare %s', (fileFormat, outputFormat) => {
+  const resultFiles = {
+    string: './__tests__/__fixtures__/nested/resultString.txt',
+    plain: './__tests__/__fixtures__/nested/resultPlain.txt',
+    json: './__tests__/__fixtures__/nested/resultJson.txt',
+  };
+
+  const beforeFile = `./__tests__/__fixtures__/nested/before.${fileFormat}`;
+  const afterFile = `./__tests__/__fixtures__/nested/after.${fileFormat}`;
+
+  const result = fs.readFileSync(resultFiles[outputFormat], 'utf-8');
+  
+  expect(genDiff(beforeFile, afterFile, `${outputFormat}`)).toBe(result);
+});
+
+/*
 test('compare JSON', () => {
   const result = fs.readFileSync('./__tests__/__fixtures__/plain/resultString.txt', 'utf-8');
   expect(genDiff(beforeJson, afterJson, 'string')).toBe(result);
@@ -108,3 +144,4 @@ test('compare nestedIni json', () => {
   const result = fs.readFileSync('./__tests__/__fixtures__/nested/resultJson.txt', 'utf-8');
   expect(genDiff(beforeIniNested, afterIniNested, 'json')).toBe(result);
 });
+*/
